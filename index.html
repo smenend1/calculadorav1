@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Calculadora Científica Educativa</title>
+
+  <meta name="description" content="Calculadora científica i educativa amb procediments pas a pas per a l'ESO." />
+  <meta name="theme-color" content="#1e3a8a" />
+
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="./icons/icon-192.png" />
+</head>
+
+<body>
+  <header class="app-header">
+    <div>
+      <p class="eyebrow">PWA educativa · ESO</p>
+      <h1>Calculadora Científica Educativa</h1>
+      <p class="subtitle">Calcula resultats i aprèn el procediment pas a pas.</p>
+    </div>
+  </header>
+
+  <main class="app-layout">
+    <section class="panel controls-panel" aria-labelledby="calculator-title">
+      <h2 id="calculator-title">Tria un mòdul</h2>
+
+      <div class="tabs" role="tablist" aria-label="Mòduls de càlcul">
+        <button class="tab active" data-module="linear" role="tab" aria-selected="true">Equació lineal</button>
+        <button class="tab" data-module="quadratic" role="tab" aria-selected="false">Equació quadràtica</button>
+        <button class="tab" data-module="geometry" role="tab" aria-selected="false">Geometria</button>
+      </div>
+
+      <form id="linear-form" class="calculator-form active" data-form="linear">
+        <h3>Resoldre ax + b = 0</h3>
+        <div class="formula-card" aria-label="Format de l'equació"><strong>Format:</strong> ax + b = 0</div>
+        <label>Coeficient a<input type="number" id="linear-a" step="any" placeholder="Exemple: 2" required /></label>
+        <label>Terme independent b<input type="number" id="linear-b" step="any" placeholder="Exemple: -8" required /></label>
+        <button type="submit" class="primary-button">Resoldre pas a pas</button>
+      </form>
+
+      <form id="quadratic-form" class="calculator-form" data-form="quadratic">
+        <h3>Resoldre ax² + bx + c = 0</h3>
+        <div class="formula-card" aria-label="Format de l'equació"><strong>Format:</strong> ax² + bx + c = 0</div>
+        <label>Coeficient a<input type="number" id="quad-a" step="any" placeholder="Exemple: 1" required /></label>
+        <label>Coeficient b<input type="number" id="quad-b" step="any" placeholder="Exemple: -5" required /></label>
+        <label>Coeficient c<input type="number" id="quad-c" step="any" placeholder="Exemple: 6" required /></label>
+        <button type="submit" class="primary-button">Resoldre pas a pas</button>
+      </form>
+
+      <form id="geometry-form" class="calculator-form" data-form="geometry">
+        <h3>Geometria</h3>
+        <label>
+          Tipus de càlcul
+          <select id="geometry-type">
+            <optgroup label="Planimetria · Àrees">
+              <option value="regular-polygon-area">Àrea d'un polígon regular</option>
+              <option value="circle-area">Àrea d'un cercle</option>
+            </optgroup>
+            <optgroup label="Estereometria · Volums">
+              <option value="prism-volume">Volum d'un prisma</option>
+              <option value="pyramid-volume">Volum d'una piràmide</option>
+              <option value="cylinder-volume">Volum d'un cilindre</option>
+            </optgroup>
+          </select>
+        </label>
+        <div id="geometry-inputs" class="dynamic-inputs"></div>
+        <button type="submit" class="primary-button">Calcular pas a pas</button>
+      </form>
+    </section>
+
+    <section class="panel result-panel" aria-live="polite" aria-labelledby="procedure-title">
+      <div class="result-header">
+        <div>
+          <p class="eyebrow">Motor pedagògic</p>
+          <h2 id="procedure-title">Procediment</h2>
+        </div>
+        <span class="status-pill" id="status-pill">Esperant dades</span>
+      </div>
+
+      <div id="result-box" class="result-box">
+        <p>Introdueix les dades d'un mòdul i prem el botó de càlcul. Aquí apareixeran el resultat i l'explicació raonada.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>Dissenyada per a l'aprenentatge autònom: operacions clares, errors explicats i passos verificables.</p>
+  </footer>
+
+  <script src="./app.js"></script>
+</body>
+</html>
